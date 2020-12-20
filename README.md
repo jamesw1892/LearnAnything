@@ -52,7 +52,7 @@ The questions are read from a JSON file which has the following structure. The o
             "quiz 1 question 2": "quiz 1 answer 2"
         }
     },
-    "logical NOT": {
+    "Logical NOT": {
         "instructions": "In terms of 1s and 0s, what is the logical NOT of the following:",
         "questions": {
             "0": "1",

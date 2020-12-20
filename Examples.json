@@ -1,4 +1,11 @@
 {
+    "Logical NOT": {
+        "instructions": "In terms of 1s and 0s, what is the logical NOT of the following:",
+        "questions": {
+            "0": "1",
+            "1": "0"
+        }
+    },
     "Phonetic Alphabet": {
         "instructions": "Enter the word corresponding to each letter of the phonetic alphabet:",
         "questions": {
