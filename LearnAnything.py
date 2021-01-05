@@ -1,9 +1,9 @@
 from random import choice
 from json import load
-from typing import Dict
+from typing import Dict, List
 from sys import argv
 
-def main(instructions: str, question_and_answers: Dict[str, str]):
+def q_and_a(instructions: str, question_and_answers: Dict[str, str]):
     """
     Print the instructions to standard output and repeatedly ask the user for
     the answers to the questions until they have correctly answered them all once
@@ -26,6 +26,32 @@ def main(instructions: str, question_and_answers: Dict[str, str]):
 
     print("\nAll questions answered")
 
+def get_all(instructions: str, prompt: str, things_to_get: List[str]):
+    """
+    Print the instructions to standard output and repeatedly ask the user for
+    a thing until they have correctly inputted them all
+    """
+
+    print(instructions)
+    things_to_get = [thing.lower() for thing in things_to_get]
+
+    things = things_to_get.copy()
+    num_got = 0
+    while things:
+        answer = input("\n" + prompt).lower()
+        if answer in things:
+            print("Correct! ", end="")
+            things.remove(answer)
+            num_got += 1
+        elif answer in things_to_get:
+            print("Already entered. ", end="")
+        else:
+            print("Incorrect. ", end="")
+
+        print("Got {}/{} = {}%".format(num_got, len(things_to_get), round(num_got / len(things_to_get) * 100)))
+
+    print("\nAll correct")
+
 def runJSON(filename: str, name: str):
     """
     Run the quiz with the given name inside the file with given name
@@ -37,10 +63,17 @@ def runJSON(filename: str, name: str):
     assert isinstance(data, dict), "The outermost layer of JSON must be an object"
     assert name in data, "The given name does not exist"
     obj = data[name]
-    assert "questions" in obj, "Must contain a questions field"
     assert "instructions" in obj, "Must contain an instructions field"
+    assert "mode" in obj, "Must contain a mode field"
 
-    main(obj["instructions"], obj["questions"])
+    if obj["mode"] == "q&a":
+        assert "questions" in obj, "Must contain a questions field"
+        q_and_a(obj["instructions"], obj["questions"])
+    
+    elif obj["mode"] == "get all":
+        assert "prompt" in obj, "Must contain a prompt field"
+        assert "things" in obj, "Must contain a things field"
+        get_all(obj["instructions"], obj["prompt"], obj["things"])
 
 def fromInput():
     """
