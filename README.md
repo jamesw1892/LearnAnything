@@ -75,7 +75,7 @@ The questions are read from a JSON file which has the following structure. The o
 
 ## Q&A Mode
 
-Includes the additional string fields prefix and suffix for text to display to the user around the question and the object field `questions` with string fields for each question and answer. Example JSON file:
+Includes the additional string fields `prefix` and `suffix` for text to display to the user around the question and the object field `questions` with string fields for each question and answer. Example JSON file:
 
 ```json
 {
