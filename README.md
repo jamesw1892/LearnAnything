@@ -40,7 +40,7 @@ Call the `runJSON` function of `LearnAnything.py` to run the quiz in the JSON fi
 
 ##### Q&A Mode
 
-Call the `q_and_a` function of `LearnAnything.py` with first argument the instructions as a string and second argument a dictionary with string keys and values where each key, value pair is a question and answer.
+Call the `q_and_a` function of `LearnAnything.py` with first argument the instructions as a string, second argument the string prefix, third argument the string suffix, and fourth argument a dictionary with string keys and values where each key, value pair is a question and answer.
 
 ##### Get All Mode
 
@@ -55,6 +55,8 @@ Call the `q_and_a` function of `MakeQuestions.py` with arguments:
 - filename (str): The filename without .json extension
 - name (str): The quiz name within the file, this is case sensitive
 - instructions (str): The instructions to show the user before the questions
+- prefix (str): Prefix to question to display to the user
+- suffix (str): Suffix to question to display to the user
 - questions_and_answers (Dict[str, str]): The questions and their corresponding answers
 
 #### Get All Mode
@@ -73,13 +75,15 @@ The questions are read from a JSON file which has the following structure. The o
 
 ## Q&A Mode
 
-Includes the additional object field `questions` with string fields for each question and answer. Example JSON file:
+Includes the additional string fields prefix and suffix for text to display to the user around the question and the object field `questions` with string fields for each question and answer. Example JSON file:
 
 ```json
 {
     "q&a 1 name": {
         "instructions": "q&a 1 instructions",
         "mode": "q&a",
+        "prefix": "q&a 1 prefix",
+        "suffix": "q&a 1 suffix",
         "questions": {
             "q&a 1 question 1": "q&a 1 answer 1",
             "q&a 1 question 2": "q&a 1 answer 2"
@@ -88,6 +92,8 @@ Includes the additional object field `questions` with string fields for each que
     "Logical NOT": {
         "instructions": "In terms of 1s and 0s, what is the logical NOT of the following:",
         "mode": "q&a",
+        "prefix": "What is the logical NOT of ",
+        "suffix": "? ",
         "questions": {
             "0": "1",
             "1": "0"

@@ -1,4 +1,8 @@
-- Add settings that can change:
-    - whether the correct answer is shown when an incorret answer is given
-    - whether it is case-sensitive
-- Add setting for q&a for what punctuation to put between questions and their answer, e.g.: `: ` or `? `
+- Remove case sensitivity of quiz names - save them all in JSON as lowercase
+- Add ability to print all quiz names in a file
+- Settings:
+    - Both modes:
+        - whether it is case-sensitive
+    - Q&A:
+        - whether the correct answer is shown when an incorret answer is given
+        - whether questions are asked in alphabetical or random order

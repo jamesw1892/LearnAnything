@@ -3,7 +3,7 @@ from json import load
 from typing import Dict, List
 from sys import argv
 
-def q_and_a(instructions: str, question_and_answers: Dict[str, str]):
+def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: Dict[str, str]):
     """
     Print the instructions to standard output and repeatedly ask the user for
     the answers to the questions until they have correctly answered them all once
@@ -17,7 +17,7 @@ def q_and_a(instructions: str, question_and_answers: Dict[str, str]):
     questions = list(question_and_answers.keys())
     while questions:
         question = choice(questions)
-        answer = input("\n" + question + "    ")
+        answer = input("\n" + prefix + question + suffix)
         if answer.lower() == question_and_answers[question].lower():
             print("Correct!")
             questions.remove(question)
@@ -67,8 +67,10 @@ def runJSON(filename: str, name: str):
     assert "mode" in obj, "Must contain a mode field"
 
     if obj["mode"] == "q&a":
+        assert "prefix" in obj, "Must contain a prefix field"
+        assert "suffix" in obj, "Must contain a suffix field"
         assert "questions" in obj, "Must contain a questions field"
-        q_and_a(obj["instructions"], obj["questions"])
+        q_and_a(obj["instructions"], obj["prefix"], obj["suffix"], obj["questions"])
     
     elif obj["mode"] == "get all":
         assert "prompt" in obj, "Must contain a prompt field"

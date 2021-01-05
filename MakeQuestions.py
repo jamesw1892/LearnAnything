@@ -32,7 +32,7 @@ def write_quiz(filename: str, name: str, instructions: str, mode: str, other_fie
     with open(filename, "w") as f:
         dump(json, f)
 
-def q_and_a(filename: str, name: str, instructions: str, question_and_answers: Dict[str, str]):
+def q_and_a(filename: str, name: str, instructions: str, prefix: str, suffix: str, question_and_answers: Dict[str, str]):
     """
     Write the given instructions, questions and answers to the given file with given name.
     If the file already exists, add this quiz to it, otherwise create it with only this quiz.
@@ -42,6 +42,8 @@ def q_and_a(filename: str, name: str, instructions: str, question_and_answers: D
     """
 
     other_fields = dict()
+    other_fields["prefix"] = prefix
+    other_fields["suffix"] = suffix
     other_fields["questions"] = question_and_answers
 
     write_quiz(filename, name, instructions, "q&a", other_fields)
@@ -63,6 +65,9 @@ def get_all(filename: str, name: str, instructions: str, prompt: str, things: Li
 
 def get_input_q_and_a(filename: str, name: str, instructions: str):
 
+    prefix = input("Prefix to question to display to the user: ")
+    suffix = input("Suffix to question to display to the user: ")
+
     print("Input blank for a question when done:")
     questions_and_answers = dict()
     count = 1
@@ -74,7 +79,7 @@ def get_input_q_and_a(filename: str, name: str, instructions: str):
         questions_and_answers[question] = answer
         count += 1
 
-    q_and_a(filename, name, instructions, questions_and_answers)
+    q_and_a(filename, name, instructions, prefix, suffix, questions_and_answers)
 
 def get_input_get_all(filename: str, name: str, instructions: str):
 

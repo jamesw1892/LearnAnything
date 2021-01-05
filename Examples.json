@@ -2,6 +2,8 @@
     "Logical NOT": {
         "instructions": "In terms of 1s and 0s, what is the logical NOT of the following:",
         "mode": "q&a",
+        "prefix": "What is the logical NOT of ",
+        "suffix": "? ",
         "questions": {
             "0": "1",
             "1": "0"
@@ -127,6 +129,8 @@
     "Phonetic Alphabet": {
         "instructions": "Enter the word corresponding to each letter of the phonetic alphabet:",
         "mode": "q&a",
+        "prefix": "What is word in the phonetic alphabet corresponding to the letter ",
+        "suffix": "? ",
         "questions": {
             "a": "alfa",
             "b": "bravo",
@@ -159,6 +163,8 @@
     "Capital Cities": {
         "instructions": "Enter the capital city of each country:",
         "mode": "q&a",
+        "prefix": "What is the capital city of ",
+        "suffix": "? ",
         "questions": {
             "Afghanistan": "Kabul",
             "Albania": "Tirana",
