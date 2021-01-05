@@ -1,0 +1,4 @@
+- Add settings that can change:
+    - whether the correct answer is shown when an incorret answer is given
+    - whether it is case-sensitive
+- Add setting for q&a for what punctuation to put between questions and their answer, e.g.: `: ` or `? `
