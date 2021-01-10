@@ -1,23 +1,4 @@
 {
-    "Logical NOT": {
-        "instructions": "In terms of 1s and 0s, what is the logical NOT of the following:",
-        "mode": "q&a",
-        "prefix": "What is the logical NOT of ",
-        "suffix": "? ",
-        "questions": {
-            "0": "1",
-            "1": "0"
-        }
-    },
-    "Boolean Values": {
-        "instructions": "In terms of numbers, enter all the boolean values",
-        "mode": "get all",
-        "prompt": "Boolean value: ",
-        "things": [
-            "0",
-            "1"
-        ]
-    },
     "US States": {
         "instructions": "Enter all states in the United States of America",
         "mode": "get all",
@@ -124,6 +105,58 @@
             "Wiltshire",
             "Worcestershire",
             "Yorkshire"
+        ]
+    },
+    "European Countries": {
+        "instructions": "Enter all countries in Europe (without any 'republic of')",
+        "mode": "get all",
+        "prompt": "Country: ",
+        "things": [
+            "Albania",
+            "Andorra",
+            "Austria",
+            "Belarus",
+            "Belgium",
+            "Bosnia and Herzegovina",
+            "Bulgaria",
+            "Croatia",
+            "Cyprus",
+            "Czech Republic",
+            "Denmark",
+            "Estonia",
+            "Finland",
+            "France",
+            "Germany",
+            "Greece",
+            "Hungary",
+            "Iceland",
+            "Ireland",
+            "Italy",
+            "Latvia",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Macedonia",
+            "Malta",
+            "Moldova",
+            "Monaco",
+            "Montenegro",
+            "Netherlands",
+            "Norway",
+            "Poland",
+            "Portugal",
+            "Romania",
+            "San Marino",
+            "Serbia",
+            "Slovakia",
+            "Slovenia",
+            "Spain",
+            "Sweden",
+            "Switzerland",
+            "Turkey",
+            "Ukraine",
+            "United Kingdom",
+            "Vatican City"
         ]
     },
     "Phonetic Alphabet": {
