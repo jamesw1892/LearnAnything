@@ -15,14 +15,18 @@ def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: D
         print(instructions)
 
     questions = list(question_and_answers.keys())
+    num_got = 0
     while questions:
         question = choice(questions)
         answer = input("\n" + prefix + question + suffix)
         if answer.lower() == question_and_answers[question].lower():
-            print("Correct!")
+            out = "Correct"
             questions.remove(question)
+            num_got += 1
         else:
-            print("Incorrect, the correct answer is " + question_and_answers[question])
+            out = "Incorrect, the correct answer is " + question_and_answers[question]
+
+        print("{}, got {}/{} = {}%".format(out, num_got, len(questions), round(num_got / len(questions) * 100)))
 
     print("\nAll questions answered")
 
@@ -40,15 +44,15 @@ def get_all(instructions: str, prompt: str, things_to_get: List[str]):
     while things:
         answer = input("\n" + prompt).lower()
         if answer in things:
-            print("Correct! ", end="")
+            out = "Correct"
             things.remove(answer)
             num_got += 1
         elif answer in things_to_get:
-            print("Already entered. ", end="")
+            out = "Already entered"
         else:
-            print("Incorrect. ", end="")
+            out = "Incorrect"
 
-        print("Got {}/{} = {}%".format(num_got, len(things_to_get), round(num_got / len(things_to_get) * 100)))
+        print("{}, got {}/{} = {}%".format(out, num_got, len(things_to_get), round(num_got / len(things_to_get) * 100)))
 
     print("\nAll correct")
 
