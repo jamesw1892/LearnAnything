@@ -43,6 +43,10 @@ def get_all(instructions: str, prompt: str, things_to_get: List[str]):
     num_got = 0
     while things:
         answer = input("\n" + prompt).lower()
+        if answer == "":
+            print("Give up, remaining things to get are: " + ", ".join(things))
+            return
+
         if answer in things:
             out = "Correct"
             things.remove(answer)
