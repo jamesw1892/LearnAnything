@@ -3,6 +3,7 @@
 - Settings:
     - Both modes:
         - whether it is case-sensitive
+        - whether the progress tracker is shown
     - Q&A:
         - whether the correct answer is shown when an incorret answer is given
         - whether questions are asked in alphabetical or random order

@@ -26,7 +26,7 @@ def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: D
         else:
             out = "Incorrect, the correct answer is " + question_and_answers[question]
 
-        print("{}, got {}/{} = {}%".format(out, num_got, len(questions), round(num_got / len(questions) * 100)))
+        print("{}, got {}/{} = {}%".format(out, num_got, len(question_and_answers), round(num_got / len(question_and_answers) * 100)))
 
     print("\nAll questions answered")
 
