@@ -1,0 +1,21 @@
+{
+    "The Home": {
+        "instructions": "Enter the German for the following home-related things including their definite articles (der, die or das). Instead of typing an umlaut, follow the letter that would have had an umlaut with the letter e.",
+        "mode": "q&a",
+        "prefix": "What is the German for ",
+        "suffix": "? ",
+        "questions": {
+            "the detached house": "das Einfamilienhaus",
+            "the semi-detached house": "die Doppelhaus",
+            "the terraced house": "das Reihenhaus",
+            "the toilet": "die Toilette",
+            "the balcony": "der Balkon",
+            "the basement": "der Keller",
+            "the bedroom": "das Schlafzimmer",
+            "the living room": "das Wohnzimmer",
+            "the dining room": "der Esszimmer",
+            "the kitchen": "die Kueche",
+            "the bathroom": "das Badezimmer"
+        }
+    }
+}
