@@ -2,6 +2,7 @@ from random import choice
 from json import load
 from typing import Dict, List
 from sys import argv
+from CommandLineTools import menu
 
 def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: Dict[str, str]):
     """
@@ -94,8 +95,19 @@ def fromInput():
     """
 
     filename = input("JSON file without extension: ")
-    name = input("Name of questions within JSON file: ")
-    runJSON(filename, name)
+
+    with open(filename + ".json") as f:
+        data = load(f)
+
+    # if there is only one quiz then run that automatically
+    if len(data) == 1:
+        for key in data:    # this loop will necessarily only run once
+            runJSON(filename, key)
+
+    # otherwise ask the user which quiz to run
+    else:
+        name = menu(list(data.keys()), "Which quiz would you like to play?")
+        runJSON(filename, name)
 
 def fromCommandLineArgs():
     """

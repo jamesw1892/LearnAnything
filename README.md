@@ -22,7 +22,7 @@ The user must repeatedly input a 'thing' until they have all been entered. The p
 
 ### Learning
 
-Run `python LearnAnything.py` to be asked for the filename and quiz name to run, or provide them as command line inputs, for example: `python LearnAnything.py Examples "Phonetic Alphabet"`. The filename should not include the `.json` extension since it must be a JSON file.
+Run `python LearnAnything.py` to be asked for the filename. If there is only one quiz in that file, it will run it immediately, if there are more, it will display them and ask for your choice. It is also possible to provide them as command line inputs, for example: `python LearnAnything.py Examples "Phonetic Alphabet"`. The filename should not include the `.json` extension since it must be a JSON file.
 
 ### Creating Questions
 

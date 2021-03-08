@@ -1,4 +1,4 @@
-- Add ability to print all quiz names in a file
+- Clean up README to have a single section for the mode containing all information rather than describing each mode in the MakeQuestions and LearnAnything sections
 - Settings:
     - Both modes:
         - whether it is case-sensitive
