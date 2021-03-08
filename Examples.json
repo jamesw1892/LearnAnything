@@ -1,5 +1,5 @@
 {
-    "US States": {
+    "us states": {
         "instructions": "Enter all states in the United States of America",
         "mode": "get all",
         "prompt": "State: ",
@@ -56,7 +56,7 @@
             "Wyoming"
         ]
     },
-    "English Counties": {
+    "english counties": {
         "instructions": "Enter all counties in England",
         "mode": "get all",
         "prompt": "County: ",
@@ -107,7 +107,7 @@
             "Yorkshire"
         ]
     },
-    "European Countries": {
+    "european countries": {
         "instructions": "Enter all countries in Europe (without any 'republic of')",
         "mode": "get all",
         "prompt": "Country: ",
@@ -159,7 +159,7 @@
             "Vatican City"
         ]
     },
-    "European Capitals": {
+    "european capitals": {
         "instructions": "Enter the capital city of each country:",
         "mode": "q&a",
         "prefix": "What is the capital city of ",
@@ -210,7 +210,7 @@
             "Wales": "Cardiff"
         }
     },
-    "Phonetic Alphabet": {
+    "phonetic alphabet": {
         "instructions": "Enter the word corresponding to each letter of the phonetic alphabet:",
         "mode": "q&a",
         "prefix": "What is word in the phonetic alphabet corresponding to the letter ",
@@ -244,7 +244,7 @@
             "z": "zulu"
         }
     },
-    "Capital Cities": {
+    "capital cities": {
         "instructions": "Enter the capital city of each country:",
         "mode": "q&a",
         "prefix": "What is the capital city of ",

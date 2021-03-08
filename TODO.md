@@ -1,4 +1,3 @@
-- Remove case sensitivity of quiz names - save them all in JSON as lowercase
 - Add ability to print all quiz names in a file
 - Settings:
     - Both modes:

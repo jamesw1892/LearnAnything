@@ -14,6 +14,9 @@ def write_quiz(filename: str, name: str, instructions: str, mode: str, other_fie
 
     filename += ".json"
 
+    # make quiz names lower case
+    name = name.lower()
+
     json = dict()
 
     if os.path.exists(filename):

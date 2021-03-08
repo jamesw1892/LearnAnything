@@ -1,5 +1,5 @@
 {
-    "The Home": {
+    "the home": {
         "instructions": "Enter the German for the following home-related things including their definite articles (der, die or das). Instead of typing an umlaut, follow the letter that would have had an umlaut with the letter e.",
         "mode": "q&a",
         "prefix": "What is the German for ",

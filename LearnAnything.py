@@ -68,6 +68,9 @@ def runJSON(filename: str, name: str):
     with open(filename + ".json") as f:
         data = load(f)
 
+    # quiz names are lower case
+    name = name.lower()
+
     assert isinstance(data, dict), "The outermost layer of JSON must be an object"
     assert name in data, "The given name does not exist"
     obj = data[name]
