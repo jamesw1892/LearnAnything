@@ -1,5 +1,6 @@
 from random import choice
 from json import load
+import os
 from typing import Dict, List
 from sys import argv
 from CommandLineTools import menu, readyUp
@@ -66,7 +67,7 @@ def runJSON(filename: str, name: str):
     Run the quiz with the given name inside the file with given name
     """
 
-    with open(filename + ".json") as f:
+    with open(os.path.join(os.path.dirname(__file__), filename + ".json")) as f:
         data = load(f)
 
     # quiz names are lower case
@@ -98,7 +99,7 @@ def fromInput():
 
     filename = input("JSON file without extension: ")
 
-    with open(filename + ".json") as f:
+    with open(os.path.join(os.path.dirname(__file__), filename + ".json")) as f:
         data = load(f)
 
     # if there is only one quiz then run that automatically
