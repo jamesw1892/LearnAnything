@@ -121,7 +121,11 @@ def fromCommandLineArgs():
     runJSON(argv[1], argv[2])
 
 if __name__ == "__main__":
-    if len(argv) > 1:
-        fromCommandLineArgs()
-    else:
-        fromInput()
+    try:
+        if len(argv) > 1:
+            fromCommandLineArgs()
+        else:
+            fromInput()
+
+    except KeyboardInterrupt:
+        print(f"{os.linesep}Keyboard interrupt, exiting")
