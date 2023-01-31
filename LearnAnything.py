@@ -2,7 +2,7 @@ from random import choice
 from json import load
 from typing import Dict, List
 from sys import argv
-from CommandLineTools import menu
+from CommandLineTools import menu, readyUp
 
 def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: Dict[str, str]):
     """
@@ -88,6 +88,8 @@ def runJSON(filename: str, name: str):
         assert "prompt" in obj, "Must contain a prompt field"
         assert "things" in obj, "Must contain a things field"
         get_all(obj["instructions"], obj["prompt"], obj["things"])
+
+    readyUp()
 
 def fromInput():
     """
