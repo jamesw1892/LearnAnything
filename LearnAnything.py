@@ -5,6 +5,19 @@ from typing import Dict, List
 from sys import argv
 from CommandLineTools import menu, readyUp
 
+def getJson(filename: str):
+    """
+    Return the object contained in the JSON file if it exists and is valid.
+    Otherwise quit
+    """
+
+    try:
+        with open(os.path.join(os.path.dirname(__file__), f"{filename}.json")) as f:
+            return load(f)
+    except FileNotFoundError:
+        print("JSON file not found")
+        exit(1)
+
 def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: Dict[str, str]):
     """
     Print the instructions to standard output and repeatedly ask the user for
@@ -67,8 +80,7 @@ def runJSON(filename: str, name: str):
     Run the quiz with the given name inside the file with given name
     """
 
-    with open(os.path.join(os.path.dirname(__file__), filename + ".json")) as f:
-        data = load(f)
+    data = getJson(filename)
 
     # quiz names are lower case
     name = name.lower()
@@ -98,9 +110,7 @@ def fromInput():
     """
 
     filename = input("JSON file without extension: ")
-
-    with open(os.path.join(os.path.dirname(__file__), filename + ".json")) as f:
-        data = load(f)
+    data = getJson(filename)
 
     # if there is only one quiz then run that automatically
     if len(data) == 1:
