@@ -1,9 +1,9 @@
-from random import choice
+from CommandLineTools import menu, menuLoop, readyUp
 from json import load
 import os
-from typing import Dict, List
+from random import choice
 from sys import argv
-from CommandLineTools import menu, readyUp
+from typing import Dict, List
 
 def getJson(filename: str):
     """
