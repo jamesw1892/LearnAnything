@@ -3,7 +3,7 @@ from json import load
 import os
 from random import choice
 from sys import argv
-from typing import Dict, List
+from typing import Dict, List, Union
 
 def getJson(filename: str):
     """
@@ -18,13 +18,16 @@ def getJson(filename: str):
         print("JSON file not found")
         exit(1)
 
-def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: Dict[str, str]):
+def printResultAndProgress(result: str, num_got: int, total_num: int):
+    print(f"{result}, got {num_got}/{total_num} = {round(num_got / total_num * 100)}% ({total_num - num_got} left)")
+
+def q_and_a(instructions: Union[str, None], prefix: str, suffix: str, question_and_answers: Dict[str, str]):
     """
     Print the instructions to standard output and repeatedly ask the user for
     the answers to the questions until they have correctly answered them all once
     """
 
-    if instructions == "":
+    if instructions is None:
         print("Enter the answer to the following questions:")
     else:
         print(instructions)
@@ -41,17 +44,21 @@ def q_and_a(instructions: str, prefix: str, suffix: str, question_and_answers: D
         else:
             out = "Incorrect, the correct answer is " + question_and_answers[question]
 
-        print("{}, got {}/{} = {}%".format(out, num_got, len(question_and_answers), round(num_got / len(question_and_answers) * 100)))
+        printResultAndProgress(out, num_got, len(question_and_answers))
 
     print("\nAll questions answered")
 
-def get_all(instructions: str, prompt: str, things_to_get: List[str]):
+def get_all(instructions: Union[str, None], prompt: str, things_to_get: List[str]):
     """
     Print the instructions to standard output and repeatedly ask the user for
     a thing until they have correctly inputted them all
     """
 
-    print(instructions)
+    if instructions is None:
+        print("Get everything:")
+    else:
+        print(instructions)
+
     things_to_get = [thing.lower() for thing in things_to_get]
 
     things = things_to_get.copy()
@@ -71,16 +78,34 @@ def get_all(instructions: str, prompt: str, things_to_get: List[str]):
         else:
             out = "Incorrect"
 
-        print("{}, got {}/{} = {}%".format(out, num_got, len(things_to_get), round(num_got / len(things_to_get) * 100)))
+        printResultAndProgress(out, num_got, len(things_to_get))
 
     print("\nAll correct")
 
-def runJSON(filename: str, name: str):
-    """
-    Run the quiz with the given name inside the file with given name
-    """
+def all_permutations(instructions: str, question_prompt: str, answer_prompt: str,
+                     question_prefix: str, question_suffix: str, answer_prefix: str,
+                     answer_suffix: str, question_and_answers: Dict[str, str]):
 
-    data = getJson(filename)
+    if instructions == "":
+        print("Get all of each and then match them up from both sides")
+    else:
+        print(instructions)
+
+    answer_and_questions = dict()
+    for question, answer in question_and_answers.items():
+        answer_and_questions[answer] = question
+
+    get_all("", question_prompt, list(question_and_answers.keys()))
+    get_all("", answer_prompt, list(question_and_answers.values()))
+    q_and_a("", question_prefix, question_suffix, question_and_answers)
+    q_and_a("", answer_prefix, answer_suffix, answer_and_questions)
+
+    print("\n\nAll permutations of the Q&A answered")
+
+def runJSON(data, name: str):
+    """
+    Run the quiz with the given name with given data
+    """
 
     # quiz names are lower case
     name = name.lower()
@@ -102,7 +127,21 @@ def runJSON(filename: str, name: str):
         assert "things" in obj, "Must contain a things field"
         get_all(obj["instructions"], obj["prompt"], obj["things"])
 
-    readyUp()
+    elif obj["mode"] == "all permutations":
+        assert "question prompt" in obj, "Must contain a question prompt field"
+        assert "answer prompt" in obj, "Must contain an answer prompt field"
+        assert "question prefix" in obj, "Must contain a question prefix field"
+        assert "question suffix" in obj, "Must contain a question suffix field"
+        assert "answer prefix" in obj, "Must contain an answer prefix field"
+        assert "answer suffix" in obj, "Must contain an answer suffix field"
+        assert "questions" in obj, "Must contain a questions field"
+        all_permutations(obj["instructions"], obj["question prompt"], obj["answer prompt"],
+                         obj["question prefix"], obj["question suffix"], obj["answer prefix"],
+                         obj["answer suffix"], obj["questions"])
+
+    ### instead of creating a new mode, just treat all q&as like this but ask before each version
+
+    readyUp("\nPress ENTER to exit: ")
 
 def fromInput():
     """
@@ -115,12 +154,12 @@ def fromInput():
     # if there is only one quiz then run that automatically
     if len(data) == 1:
         for key in data:    # this loop will necessarily only run once
-            runJSON(filename, key)
+            runJSON(data, key)
 
     # otherwise ask the user which quiz to run
     else:
         name = menu(list(data.keys()), "Which quiz would you like to play?")
-        runJSON(filename, name)
+        runJSON(data, name)
 
 def fromCommandLineArgs():
     """
@@ -128,7 +167,7 @@ def fromCommandLineArgs():
     """
 
     assert len(argv) > 2, "Must provide JSON file and name of questions"
-    runJSON(argv[1], argv[2])
+    runJSON(getJson(argv[1]), argv[2])
 
 if __name__ == "__main__":
     try:
