@@ -148,7 +148,10 @@ def fromInput():
     Get input from the user for the file and name to choose
     """
 
-    filename = input("JSON file without extension: ")
+    filename = menu(
+        [filename[:-5] for filename in os.listdir(os.path.dirname(__file__)) if filename.endswith(".json")],
+        "Quiz Category:"
+    )
     data = getJson(filename)
 
     # if there is only one quiz then run that automatically
