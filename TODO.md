@@ -1,4 +1,5 @@
 - Clean up README to have a single section for the mode containing all information rather than describing each mode in the MakeQuestions and LearnAnything sections
+- Add what quiz mode the quizes are in the menu
 - Settings:
     - Both modes:
         - whether it is case-sensitive

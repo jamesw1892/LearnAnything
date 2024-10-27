@@ -404,6 +404,22 @@
             "Wales": "Cardiff"
         }
     },
+    "european capitals all permutations": {
+        "instructions": "Get all european countries, all european capitals, and which belongs to which from both directions:",
+        "mode": "all permutations",
+        "question prompt": "Country: ",
+        "answer prompt": "Capital: ",
+        "question prefix": "What is the capital city of ",
+        "question suffix": "? ",
+        "answer prefix": "What country is ",
+        "answer suffix": " the capital of? ",
+        "questions": {
+            "England": "London",
+            "Northern Ireland": "Belfast",
+            "Scotland": "Edinburgh",
+            "Wales": "Cardiff"
+        }
+    },
     "capital cities": {
         "instructions": "Enter the capital city of each country:",
         "mode": "q&a",

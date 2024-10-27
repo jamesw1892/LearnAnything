@@ -17,5 +17,21 @@
             "the kitchen": "die Kueche",
             "the bathroom": "das Badezimmer"
         }
+    },
+    "newly learnt": {
+        "instructions": "Enter the German for the following. Follow a letter that would have an umlaut with an e.",
+        "mode": "q&a",
+        "prefix": "What is the German for ",
+        "suffix": "? ",
+        "questions": {
+            "male doctor": "Arzt",
+            "female doctor": "Aerztin",
+            "(male) waiter": "Kellner",
+            "waitress": "Kellnerin",
+            "(male) actor": "Schauspieler",
+            "actress": "Schauspielerin",
+            "i paint": "ich male",
+            "you paint": "du malst"
+        }
     }
 }
