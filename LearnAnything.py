@@ -1,4 +1,4 @@
-from CommandLineTools import menu, menuLoop, readyUp
+from CommandLineTools import menu, menuLoopSingle, readyUp
 from json import load
 import os
 from random import choice
@@ -140,8 +140,6 @@ def runJSON(data, name: str):
                          obj["answer suffix"], obj["questions"])
 
     ### instead of creating a new mode, just treat all q&as like this but ask before each version
-
-    readyUp("\nPress ENTER to exit: ")
 
 def fromInput(filename: str):
     """
