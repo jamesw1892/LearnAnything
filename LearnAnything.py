@@ -143,15 +143,11 @@ def runJSON(data, name: str):
 
     readyUp("\nPress ENTER to exit: ")
 
-def fromInput():
+def fromInput(filename: str):
     """
-    Get input from the user for the file and name to choose
+    Get input from the user for the name to choose
     """
 
-    filename = menu(
-        [filename[:-5] for filename in os.listdir(os.path.dirname(__file__)) if filename.endswith(".json")],
-        "Quiz Category:"
-    )
     data = getJson(filename)
 
     # if there is only one quiz then run that automatically
@@ -177,7 +173,12 @@ if __name__ == "__main__":
         if len(argv) > 1:
             fromCommandLineArgs()
         else:
-            fromInput()
+            menuLoopSingle(
+                [filename[:-5] for filename in os.listdir(os.path.dirname(__file__)) if filename.endswith(".json")],
+                fromInput,
+                [],
+                "Quiz Category:"
+            )
 
     except KeyboardInterrupt:
         print(f"{os.linesep}Keyboard interrupt, exiting")
